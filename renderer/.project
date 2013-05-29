@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>SigilUniverse</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.adobe.flexbuilder.project.flexbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.adobe.flexbuilder.project.apollobuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.adobe.flexbuilder.project.apollonature</nature>
+		<nature>com.adobe.flexbuilder.project.actionscriptnature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>[source path] AS3WebSocket-src</name>
+			<type>2</type>
+			<location>/Volumes/hdd/koop/Code/Ext/AS3WebSocket/AS3WebSocket/src</location>
+		</link>
+		<link>
+			<name>[source path] Horten-src</name>
+			<type>2</type>
+			<location>/Volumes/hdd/koop/Code/horten-as3/Horten/src</location>
+		</link>
+		<link>
+			<name>[source path] RockSpiritCoreLib-src</name>
+			<type>2</type>
+			<location>/Volumes/hdd/koop/Code/RockSpiritCoreLib/src</location>
+		</link>
+		<link>
+			<name>[source path] as3corelib-src</name>
+			<type>2</type>
+			<location>/Volumes/hdd/koop/Code/Ext/as3corelib/src</location>
+		</link>
+	</linkedResources>
+</projectDescription>
