@@ -3,5 +3,27 @@
 		"host": "10.4.1.110",
 		"http": 9999,
 		"osc": 8000
+	},
+	"master": {
+		"host": "10.4.1.40",
+		"port": 1337
+	},
+	"controls": {
+		"host": "192.168.43.73",
+		"outPort": 8000,
+		"inPort": 9000
+	},
+	"lightshow": {
+		"host": "192.168.43.166",
+		"osc": 8001
+	},
+	"watershed": {
+		"root": "http://10.4.1.40:65432/ws/",
+		"gifIndex": "index/original/orbit/?depth=3"
+	},
+	"web": {
+		"root": "http://10.4.1.40:65432/orbit/",
+		"viewer": "viewer/",
+		"index": "gifIndex.php"
 	}
 }

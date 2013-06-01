@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Directory</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.adobe.flexbuilder.flashbridge.flashprobuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.adobe.flexbuilder.flashbridge.flashpronature</nature>
+		<nature>com.adobe.flexbuilder.project.actionscriptnature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>[source path] AS3WebSocket-src</name>
+			<type>2</type>
+			<location>/Volumes/hdd/koop/Dropbox/UniverseIndexExt/ext/AS3WebSocket/AS3WebSocket/src</location>
+		</link>
+		<link>
+			<name>[source path] ASFancyLib-src</name>
+			<type>2</type>
+			<location>/Volumes/hdd/koop/Dropbox/UniverseIndexExt/ASFancyLib/src</location>
+		</link>
+		<link>
+			<name>[source path] Horten-src</name>
+			<type>2</type>
+			<location>/Volumes/hdd/koop/Code/horten-as3/Horten/src</location>
+		</link>
+		<link>
+			<name>[source path] RockSpiritCoreLib-src</name>
+			<type>2</type>
+			<location>/Volumes/hdd/koop/Code/RockSpiritCoreLib/src</location>
+		</link>
+		<link>
+			<name>[source path] as3corelib</name>
+			<type>2</type>
+			<location>/Volumes/hdd/koop/Dropbox/UniverseIndexExt/ext/as3corelib</location>
+		</link>
+	</linkedResources>
+</projectDescription>

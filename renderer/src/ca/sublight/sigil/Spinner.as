@@ -7,30 +7,65 @@ package ca.sublight.sigil
 	import flash.geom.Matrix;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
+	import flash.utils.getTimer;
+	
+	import ca.rockspirit.horten.Horten;
+	import ca.rockspirit.horten.HortenListener;
 
 	public class Spinner
 	{
-		public var seqId:int 		= 526141934;
+		public var sequence:Sequence;
 		public var frame:Number 	= 0;
-		public var wantFrame:Number = 10;
+		public var wantFrame:Number = 3;
 		public var delta:Number		= 0;
-		public var gravity:Number 	= 0.0001;
-		public var damping:Number 	= 0.999;
+		public var gravity:Number 	= 0.01;
+		public var damping:Number 	= 0.99;
 			
 		protected var _bounds:Rectangle = new Rectangle ( 0, 0, 320, 320 );
 		
 		public var maskStyle:String = 'linear';
 		public var maskAngle:Number = 90;
-		public var maskFeather:Number = 320;
+		public var maskFeather:Number = 480;
 		
 		protected var mask:Shape;
 		
 		protected var zeroPoint:Point = new Point ( 0, 0 );
 		
-		public function Spinner()
+		public var listener:HortenListener;
+		
+		public function Spinner( path:String )
 		{
+			listener = new HortenListener ( path, null, false );
+			listener.callback = onHorten;
+			
 			mask = new Shape ();
 		}
+		
+		protected function onHorten ( path:String, value:* ):void {
+			var a:Array = Horten.pathArray( path );
+			
+			var numVal:Number = Number(value);		
+			var time:int = flash.utils.getTimer();
+			
+			
+			
+			switch ( path ) {
+				case '/url/':
+					sequence = Sequence.getSequence( value );
+				break;
+				
+				case '/gravity/value/':
+					gravity = Math.pow ( 0.1, ( 2 - numVal )  );
+					break;
+				
+				case '/pos/value/':
+					wantFrame = Sequence.SEQ_MAX * numVal;
+				break;
+				
+			}
+			
+		}
+		
 		
 		public function update ():void 
 		{
@@ -48,22 +83,28 @@ package ca.sublight.sigil
 		
 		public function draw ():BitmapData
 		{
+			if ( !sequence )
+				return null;
+			
 			var frame0:int = Math.floor( frame );
-			var frame1:int = Math.ceil( frame );
+			var frame1:int = Math.min( Math.ceil( frame ), Sequence.SEQ_MAX );
 			
 			if ( frame0 == frame1 ) {
-				return WSIndex.getFrame( seqId, frame0 );
+				return sequence.getFrame( frame0 );
 			}
 			
 			var c:Number = frame - frame0;
+			
+			maskAngle = 180;
+			
 			drawMask ( mask, c, true );
 			
 			var maskBm:BitmapData = new BitmapData ( _bounds.width, _bounds.height, true, 0 );
 			maskBm.draw( mask );
 			var ret:BitmapData = new BitmapData ( _bounds.width, _bounds.height, false, 0 );
 			
-			var under:BitmapData = WSIndex.getFrame( seqId, frame0 );
-			var over:BitmapData = WSIndex.getFrame( seqId, frame1 );
+			var under:BitmapData = sequence.getFrame( frame0 );
+			var over:BitmapData = sequence.getFrame( frame1 );
 			
 			if ( under )
 				ret.copyPixels( under, _bounds, zeroPoint );

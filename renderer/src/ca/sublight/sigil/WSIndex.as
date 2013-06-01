@@ -13,10 +13,11 @@ package ca.sublight.sigil
 		
 				
 		public static function getIndex ():void {
-			var call:JSONCall = new JSONCall ( indexURL, onGetIndex );
+			//var call:JSONCall = new JSONCall ( indexURL, onGetIndex );
 			
 		}
 		
+		/*
 		protected static function onGetIndex ( data:Object ):void {
 			if ( data.listing ) {
 				for each ( var ob:* in data.listing ) {
@@ -33,10 +34,9 @@ package ca.sublight.sigil
 						var seqId:int = int( day+time );
 						var frame:int = int( pathArr[3].split('.')[0] );
 						
-						var seq:Sequence;
 						seq = sequences[seqId];
 						if ( !seq ) {
-							seq = sequences[seqId] = new Sequence ();
+							seq = sequences[seqId] = new Sequence ( seqId );
 						}
 						
 						seq.imageURL( frame, ob.url );												
@@ -49,10 +49,11 @@ package ca.sublight.sigil
 			var seq:Sequence;
 			seq = sequences[seqId];
 			if ( !seq ) {
-				seq = sequences[seqId] = new Sequence ();
+				seq = sequences[seqId] = new Sequence ( seqId );
 			}
 			
 			return seq.getFrame ( frame );
 		}
+		*/
 	}
 }

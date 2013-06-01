@@ -2,6 +2,7 @@ package ca.sublight.sigil
 {
 	import flash.display.BitmapData;
 	import flash.display.Sprite;
+	import flash.geom.Matrix;
 	import flash.geom.Point;
 	import flash.utils.getTimer;
 	
@@ -25,7 +26,7 @@ package ca.sublight.sigil
 		
 		
 		protected function onHorten ( path:String, value:* ):void {
-			trace ( "SCREEN", path, value );
+			trace ( "SCREEN", listener.path, path, value );
 			var a:Array = Horten.pathArray( path );
 			
 			var numVal:Number = Number(value);		
@@ -36,11 +37,11 @@ package ca.sublight.sigil
 			switch ( a[0] ) {
 				case 'corner':
 					if ( a[2] == '1' ) {
-						corner[int(a[1])].x = numVal;
-					} else {
 						corner[int(a[1])].y = numVal;
+					} else {
+						corner[int(a[1])].x = numVal;
 					}
-					break;
+				break;
 			}
 			
 		}
@@ -87,7 +88,7 @@ package ca.sublight.sigil
 			var f:Number = (ll1 + ll2) / (lr1 + lr2);
 			
 			// Draws the triangle
-		
+			
 			graphics.beginBitmapFill(bitmap, null, false, smooth );
 			
 			graphics.drawTriangles(

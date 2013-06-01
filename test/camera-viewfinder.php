@@ -1,24 +1,20 @@
 <?php
-
+	$config = json_decode( file_get_contents( "../config.json" ) );
 ?>
 <html>
 <head>
 <title>Orbit Viewfinder</title>
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src='http://10.4.1.112:9999/camera/?js=true'></script>
+<script src='http://10.4.1.40:1337/camera/?js=true'></script>
 <script>
 	H.instance().debug = true;
 
 	var image = new H.Listener ( 
 		{
-			path: '/viewfinder',
-			primitive: true 
+			path: '/viewfinder/url'
 		},
 		function ( value, path ) {
-			console.log ( "VF", path, value );
-			if ( path.startsWith( '/test' ) ) {
-				$('#viewfinder').attr('src', value );
-			}
+			$('#viewfinder').attr('src', value );
 		} 
 	);
 
